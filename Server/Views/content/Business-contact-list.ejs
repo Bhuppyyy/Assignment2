@@ -8,6 +8,8 @@ Student Id: 301187371 -->
 
     <div class="row">
         <div class="col">
+
+            <a href="/add" id="addButton" class="btn btn-primary mb-1"><i class="fa-solid fa-circle-plus"></i> Add Contact</a> 
     
             <table class="table table-striped table-bordered table-hover">
                 <thead class="table-dark">
@@ -22,14 +24,14 @@ Student Id: 301187371 -->
                 </thead>
                 <tbody id="bcontact">
                     <!-- Repeatable Rows -->
-                    <% for(let count = 0; count < movies.length; count++) { %>
+                    <% for(let count = 0; count < bcontact.length; count++) { %>
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
-                            <td><%= movies[count].Name %></td>
-                            <td><%= movies[count].Phone_Number %></td>
-                            <td><%= movies[count].Email_Address %></td>
-                            <td></td>
-                            <td></td>
+                            <td><%= bcontact[count].Name %></td>
+                            <td><%= bcontact[count].Phone_Number %></td>
+                            <td><%= bcontact[count].Email_Address %></td>
+                            <td class="text-center"><a href="/edit/<%= bcontact[count]._id %>" class="btn btn-primary btn-sm edit"><i class="fa-solid fa-pen-to-square"></i></a> Edit</td>    
+                            <td class="text-center"><a href="/delete/<%= bcontact[count]._id %>" class="btn btn-danger btn-sm delete"><i class="fa-solid fa-trash-can"></i></a> Delete</td>
                         </tr>
                     <% } %>
                 </tbody>

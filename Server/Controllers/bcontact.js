@@ -12,7 +12,7 @@ function DisplayBContactList(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Business Contact list', page: 'Business-contact-list', movies: businesscontactcollection, displayName: (0, Util_1.UserDisplayName)(req) });
+        res.render('index', { title: 'Business Contact list', page: 'Business-contact-list', bcontact: businesscontactcollection, displayName: (0, Util_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayBContactList = DisplayBContactList;

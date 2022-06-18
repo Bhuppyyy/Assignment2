@@ -13,6 +13,6 @@ export function DisplayBContactList(req: express.Request, res: express.Response,
             console.error(err);
             res.end(err);
         }
-        res.render('index', {title: 'Business Contact list', page: 'Business-contact-list', movies: businesscontactcollection, displayName: UserDisplayName(req) });
+        res.render('index', {title: 'Business Contact list', page: 'Business-contact-list', bcontact: businesscontactcollection, displayName: UserDisplayName(req) });
     });
 }
