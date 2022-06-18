@@ -24,7 +24,20 @@ export function DisplayAddList(req: express.Request, res: express.Response, next
 
 export function DisplayEditPage(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
-    
+    let id = req.params.id;
+
+    //pass the id to db and read the contact into the edit page
+    BusinessContact.findById(id, {}, {}, function(err, contactToEdit)
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+
+        //show the edit view with the data
+        res.render('index', { title: 'Edit', page: 'edit', bcontact: contactToEdit, displayName: UserDisplayName(req) })
+    });
 }
 
 export function ProcessAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void

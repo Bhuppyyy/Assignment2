@@ -21,6 +21,14 @@ function DisplayAddList(req, res, next) {
 }
 exports.DisplayAddList = DisplayAddList;
 function DisplayEditPage(req, res, next) {
+    let id = req.params.id;
+    bcontact_1.default.findById(id, {}, {}, function (err, contactToEdit) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.render('index', { title: 'Edit', page: 'edit', bcontact: contactToEdit, displayName: (0, Util_1.UserDisplayName)(req) });
+    });
 }
 exports.DisplayEditPage = DisplayEditPage;
 function ProcessAddPage(req, res, next) {
