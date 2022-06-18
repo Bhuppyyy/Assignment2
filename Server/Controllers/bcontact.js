@@ -17,6 +17,7 @@ function DisplayBContactList(req, res, next) {
 }
 exports.DisplayBContactList = DisplayBContactList;
 function DisplayAddList(req, res, next) {
+    res.render('index', { title: 'Add', page: 'edit', bcontact: '', displayName: (0, Util_1.UserDisplayName)(req) });
 }
 exports.DisplayAddList = DisplayAddList;
 function DisplayEditPage(req, res, next) {

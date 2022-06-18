@@ -19,12 +19,12 @@ export function DisplayBContactList(req: express.Request, res: express.Response,
 
 export function DisplayAddList(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
-
+    res.render('index', { title: 'Add', page: 'edit', bcontact: '', displayName: UserDisplayName(req) })
 }
 
 export function DisplayEditPage(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
-
+    
 }
 
 export function ProcessAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void
