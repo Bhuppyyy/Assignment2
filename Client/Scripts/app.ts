@@ -6,25 +6,12 @@
     {
         console.log("App Started!");
 
-        // use AJAX to read JSON file
-
-        // Step 1: Create a new XHR object
-        let XHR = new XMLHttpRequest();
-
-        // Step 2: Create the request
-        XHR.open("GET", "../data/data.json");
-
-        // Step 3: Send the request
-        XHR.send();
-
-        // Step 4: create an event listener/handler
-        XHR.addEventListener("readystatechange", function()
+        $("a.delete").on("click", function(event)
         {
-            if(XHR.readyState == 4 && XHR.status == 200)
+            if(!confirm("Are you sure?"))
             {
-                console.log("JSON Data:");
-                console.log("===========");
-                console.log(XHR.responseText);
+                event.preventDefault();
+                location.href = "/Business-contact-list";
             }
         });
     }
