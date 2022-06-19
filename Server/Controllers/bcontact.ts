@@ -1,4 +1,5 @@
 import express from 'express';
+import { CallbackError } from 'mongoose';
 
 import BusinessContact from '../Models/bcontact';
 
@@ -51,7 +52,7 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
     });
 
     //Insert the new Contact object into the database
-    BusinessContact.create(newContact, function(err: ErrorCallback)
+    BusinessContact.create(newContact, function(err: CallbackError)
     {
         if(err)
         {
@@ -79,7 +80,7 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
     });
 
     //update the contact in the database
-    BusinessContact.updateOne({_id: id}, updatedContact, function(err: ErrorCallback)
+    BusinessContact.updateOne({_id: id}, updatedContact, function(err: CallbackError)
     {
         if(err)
         {
@@ -94,5 +95,18 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
 
 export function ProcessDeletePage(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
+    let id = req.params.id;
 
+    //pass the id to the db and delete the contact
+    BusinessContact.remove({_id: id}, function(err: CallbackError)
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+        
+        // delete was successful
+        res.redirect('/Business-contact-list');
+    });
 }
