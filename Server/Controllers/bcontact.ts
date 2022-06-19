@@ -42,7 +42,27 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
 
 export function ProcessAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
-    
+    // instantiate a new Contact to Add
+    let newContact = new BusinessContact
+    ({
+        "Name": req.body.contactName,
+        "Phone_Number": req.body.contactPNumber,
+        "Email_Address": req.body.contactEAddress
+    });
+
+    //Insert the new Contact object into the database
+    BusinessContact.create(newContact, function(err: ErrorCallback)
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+
+        // new Contact has been added -> refresh the business-contact-list
+        res.redirect('/Business-contact-list');
+
+    });
 }
 
 export function ProcessEditPage(req: express.Request, res: express.Response, next: express.NextFunction): void
